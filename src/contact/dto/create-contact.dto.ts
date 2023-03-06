@@ -4,6 +4,7 @@ import {
   IsEmail,
   IsPhoneNumber,
   IsOptional,
+  Max
 } from 'class-validator';
 
 
@@ -14,11 +15,12 @@ export class CreateContactDto {
   name: string;
 
   @IsNotEmpty()
-  
+
   @IsEmail({}, { each: true })
   email: string[];
 
   @IsNotEmpty()
+  @Max(10)
   @IsPhoneNumber(undefined, { each: true })
   phone: string[];
 }
